@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+function getWordsBeginWith(words, begin_char)  {
+var return_words = [];
+var small_char.toLower Case();
+for (var i = 0; i < words.length; i++) {
+if (words[i].startsWith('begin_char') || words[i].startsWith('begin_char'))
+return_words.push(words[i]);
+}
+return return_words;
+}
+</body>
+</html>
