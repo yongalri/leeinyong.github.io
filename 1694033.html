@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <input type="radio" name="view" checked>테이블
+    <input type="radio" name="view">목록
+</div>
+<div id="view_area">
+</div>
+<input type="text" id="name">
+<input type="text" id="type">
+<button id="add">추가</button>
+<script>
+    var data = [{name: '사자', type: '포유류'},
+        {name: '코끼리', type:'포유류'},
+        {name: '펭귄', type: '조류'},
+        {name: '돌고래', type: '포유류'},
+        {name: '상어', type: '어류'}];
+
+    function radio_changed(e) {
+        var view_radio = document.getElementsByName("view");
+        var bTable = false;
+        if (view_radio[0].checked) {
+            bTable = true;
+        }
+
+        var view_area = document.getElementById("view_area");
+
+        var html = '';
+        if (bTable) {
+            html += '<table border>';
+            for (var i = 0; i < data.length; i++) {
+                html += '<tr><td>' + data[i].name + '</td><td>' + data[i].type + '</td></tr>';
+            }
+            html += '</table>';
+        } else {
+            html += '<list border>';
+            for (var i=0; i<data. length; i++){
+                html +='<li>' + data[i].name + ''+ ':' +data[i].type + '</li>'
+            }
+            html += '</list>'
+            // TODO: 목록을 선택했을때 보여주기 위한 코드
+
+            // -----
+        }
+
+
+        document.getElementById('view_area').innerHTML = html;
+    }
+
+    var view_radio = document.getElementsByName("view");
+    view_radio[0].onclick = radio_changed;
+    view_radio[1].onclick = radio_changed;
+
+    document.getElementById('add').onclick = function () {
+        var name_val = document.getElementById('name').value;
+        var type_val = document.getElementById('type').value;
+
+        // TODO: 동일한 이름이 존재하면 추가되지 않도록 하는 코드를 작성.
+        for (var i = 0; i< data.length; i++)
+        {
+            if(data[i].name == name_val)
+            {
+                alert('같은 것이 있습니다.');
+                return;
+
+            }
+        }
+        // -----
+
+        data[data.length] = {name: name_val, type: type_val};
+
+        radio_changed();
+    };
+
+    radio_changed();
+
+</script>
+</body>
+</html>
