@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Exercise</title>
+    <script>
+        var first_val;
+        var operand;
+
+        function display_debug() {
+            var debug_out = document.getElementById("debug_area");
+            var debug_text = "<p>first_val:" + first_val + "</p>";
+            debug_text += "<p>operand:" + operand + "</p>";
+            debug_out.innerHTML = debug_text;
+            
+        }
+
+        function button_click() {
+            var text = document.getElementById("text_display");
+            var num = this.textContent;
+            text.value = text.value + num;
+
+            display_debug();
+        }
+
+        function button_plus() {
+            var text = document.getElementById("text_display");
+            first_val = parseInt(text.value);
+            text.value = '';
+            operand = 'plus';
+
+            display_debug();
+        }
+        function button_minus() {
+            var text = document.getElementById("text_display");
+            first_val = parseInt(text.value);
+            text.value = '';
+            operand = 'minus';
+
+            display_debug();
+        }
+        function button_equal() {
+            var text = document.getElementById("text_display");
+            var second_val = parseInt(text.value);
+            if (operand == 'plus') {
+                text.value = '' + (first_val + second_val);
+            }
+            operand = '';
+
+            if (operand == 'minus') {
+                text.valud ='' + (first_val - second_val);
+            }
+            operand = '';
+
+            display_debug();
+        }
+
+        function button_clear() {
+            var text = document.getElementById("text_display");
+            text.value = '';
+            operand = '';
+
+            display_debug();
+        }
+
+        window.onload = function (e) {
+            var buttons = document.getElementsByClassName("num_btn");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = button_click;
+            }
+            document.getElementById("btn_plus").onclick = button_plus;
+            document.getElementById("btn_minus").onclick = button_minus;
+            document.getElementById("btn_equal").onclick = button_equal;
+            document.getElementById("btn_clear").onclick = button_clear;
+        }
+    </script>
+</head>
+<body>
+
+<input type="text" id="text_display"/><br/>
+<button class="num_btn">1</button>
+<button class="num_btn">2</button>
+<button class="num_btn">3</button>
+<button id="btn_clear">C</button><br/>
+<button class="num_btn">4</button>
+<button class="num_btn">5</button>
+<button class="num_btn">6</button>
+<button id="btn_plus">+</button><br/>
+<button class="num_btn">7</button>
+<button class="num_btn">8</button>
+<button class="num_btn">9</button>
+<button id="btn_minus">-</button><br/>
+<button class="num_btn">0</button>
+
+<button id="btn_equal">=</button><br/>
+
+<div id="debug_area">
+</div>
+</body>
+</html>
