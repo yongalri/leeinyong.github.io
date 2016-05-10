@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>사람아 아, 사람아!</h1>
+
+<h1 id = 'order'>차례</h1>
+<div id="toc"></div>
+
+<div id = "test">
+<h1>제1장 저마다의 진실</h1>
+<p>도도히 흘러가는 홍수 속을 나는 부지런히 헤엄쳐 나가고 있었다. 도대체 내가 어디에서 헤엄쳐 와서 어디로 헤엄쳐 가고 있는지 알 수 없었다.</p>
+
+<h1>제2장 마음이 머물 곳을 찾아서</h1>
+<p>######</p>
+
+<h1>제3장 가슴에 흩어지는 불꽃</h1>
+<p>######</p>
+
+<h1>제4장 동녘에 솟는 해, 서산에 내리는 비</h1>
+<p>######</p></div>
+
+
+<script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+<script>
+    $('#toc').append("<ul id = 'tic'></ul>")
+    $('#test h1').each(function(i) {
+        var current = $(this);
+        current.attr('id', 'title' + i);
+        $('#tic').append('<li><a href="#title' + i + '">' + current.html() + '</a></li>');
+    });
+    $('#order').click(function () {
+        $('#toc').slideToggle()
+    })
+</script>
+</body>
+</html>
