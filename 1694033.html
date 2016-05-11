@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2</title>
+
+    <script>
+        var obj_list = [
+            {firstName: 'fitstName', lastName: 'lastName'},
+            {firstName: '스티브', lastName: '잡스'},
+            {firstName: '빌', lastName: '게이츠'},
+            {firstName: '마크', lastName: '저커버그'},
+            {firstName: '앨런', lastName: '머스크'}
+        ];
+
+        var html = "<table border='1'>";
+
+        for (var i = 0; i < obj_list.length; i++) {
+            html += "<tr>" + "<td>"+ obj_list[i].firstName + "</td>" + "<td>"+ obj_list[i].lastName +"</td>"+"</tr>";
+        }
+
+        html += "</table>";
+    </script>
+
+    <style>
+        table {
+            border-style : double;
+        }
+    </style>
+
+</head>
+<body>
+<h1>유명한 CEO</h1>
+<div id="ceo_list"></div>
+
+<script>
+    document.getElementById("ceo_list").innerHTML = html;
+</script>
+
+</body>
+</html>
