@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Exercise</title>
+    <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+    <script>
+        var first_val;
+        var operand;
+
+        function display_debug() {
+            var debug_text = "<p>first_val:" + first_val + "</p>";
+            debug_text += "<p>operand:" + operand + "</p>";
+            $('#debug_area').html(debug_text);
+        }
+
+        function button_click() {
+            var num = $(this).text(); //this.textContent;
+            var newval = $('#text_display').val() + num;
+            $('#text_display').val(newval);
+
+            display_debug();
+        }
+
+        function button_plus() {
+            var text = $("#text_display");
+            first_val = parseInt(text.val());
+            text.val('');
+            operand = 'plus';
+
+            display_debug();
+        }
+
+        function button_equal() {
+            var text = $("#text_display");
+            var second_val = parseInt(text.val());
+            if (operand == 'plus') {
+                text.val('' + (first_val + second_val));
+            }
+            operand = '';
+
+            display_debug();
+        }
+
+        function button_clear() {
+            var text = $("#text_display");
+            text.val('');
+            operand = '';
+
+            display_debug();
+        }
+
+        $(document).ready(function () {
+            $(".num_btn").click(button_click);
+            $('#btn_plus').click(button_plus);
+            $('#btn_equal').click(button_equal);
+            $('#btn_clear').click(button_clear);
+
+        });
+    </script>
+</head>
+<body>
+
+<input type="text" id="text_display"/><br/>
+<button class="num_btn">1</button>
+<button class="num_btn">2</button>
+<button class="num_btn">3</button>
+<button id="btn_clear">C</button><br/>
+<button class="num_btn">4</button>
+<button class="num_btn">5</button>
+<button class="num_btn">6</button>
+<button id="btn_plus">+</button><br/>
+<button class="num_btn">7</button>
+<button class="num_btn">8</button>
+<button class="num_btn">9</button>
+<button>-</button><br/>
+<button class="num_btn">0</button>
+
+<button id="btn_equal">=</button><br/>
+
+<div id="debug_area">
+</div>
+</body>
+</html>
